@@ -8,6 +8,7 @@
       "sizes": "512x512"
     }
   ],
+  "start_url": "/?native",
   "background_color": "#918e8e",
   "display": "standalone",
   "theme_color": "#544949"
