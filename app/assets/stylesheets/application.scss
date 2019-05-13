@@ -1,0 +1,10 @@
+@import "bootstrap";
+
+
+.btn{
+  width: 100% !important;
+}
+
+.alert-alert{
+  @extend .alert-danger;
+}
