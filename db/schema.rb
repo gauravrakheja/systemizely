@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_13_123347) do
+ActiveRecord::Schema.define(version: 2019_05_13_124359) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 2019_05_13_123347) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "house_members", force: :cascade do |t|
+    t.bigint "house_id", null: false
+    t.bigint "member_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["house_id"], name: "index_house_members_on_house_id"
+    t.index ["member_id", "house_id"], name: "index_house_members_on_member_id_and_house_id"
+    t.index ["member_id"], name: "index_house_members_on_member_id"
   end
 
   create_table "houses", force: :cascade do |t|
@@ -43,5 +53,7 @@ ActiveRecord::Schema.define(version: 2019_05_13_123347) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "house_members", "houses"
+  add_foreign_key "house_members", "users", column: "member_id"
   add_foreign_key "houses", "users", column: "owner_id"
 end

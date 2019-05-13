@@ -1,11 +1,32 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <%= link_to "Systemetize", root_path, class: "navbar-brand" %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <% if current_user.houses.exists? %>
+          <%= form_with url: set_current_houses_path, html: { id: "current-house-form" } do %>
+            <%= select_tag :current_house,
+                           options_from_collection_for_select(
+                             current_user.houses,
+                             :id,
+                             :name,
+                             current_house.try(:id)
+                           ),
+                           prompt: "Select a house",
+                           id: "current-house-select",
+                           class: "form-control"
+            %>
+          <% end %>
+        <% else %>
+          <%= render "houses/form", house: House.new, inline: true %>
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Manage houses", manage_houses_path, class: "nav-link" %>
+      </li>
       <li class="nav-item">
         <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link" %>
       </li>

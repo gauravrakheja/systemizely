@@ -9,7 +9,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="bg-dark">
     <%= render "layouts/navbar" %>
     <% flash.each do |flash_type, message| %>
       <div class="alert alert-<%= flash_type %>" role="alert">

@@ -1,0 +1,27 @@
+<div class="mt-4 mb-4 d-flex justify-content-center new_house_form">
+  <%= render "form", house: House.new, inline: false %>
+</div>
+<table class="table table-striped bg-light">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Members</th>
+      <th>Owner</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @houses.each do |house| %>
+      <tr>
+        <td>
+          <%= link_to house.name, house_path(house) %>
+        </td>
+        <td>
+          <%= house.house_members.size %>
+        </td>
+        <td>
+          <%= house.owner.email %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,7 @@
+<%= form_with url: house_members_path, html: { class: form_inline(inline) } do |form| %>
+  <%= form.hidden_field :house_id, value: house.id %>
+  <div class="form-group">
+    <%= form.text_field :email, placeholder: "email", class: "form-control" %>
+  </div>
+  <%= form.submit "Invite", class: "btn btn-light" %>
+<% end %>
