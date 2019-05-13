@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f20e7cd4-c1dc-45b8-86a1-3706292be2b9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -91,7 +90,7 @@
             <entry file="file://$PROJECT_DIR$/Procfile">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="23">
-                  <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
+                  <caret line="1" column="24" lean-forward="true" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
                 </state>
               </provider>
             </entry>
@@ -339,7 +338,7 @@
     </factor>
     <factor id="completionFinishedType">
       <dailyData date="13-05-2019">
-        <observation name="cancelled" value="2951.0" />
+        <observation name="cancelled" value="2952.0" />
         <observation name="explicitSelect" value="170.0" />
         <observation name="typedSelect" value="439.0" />
       </dailyData>
@@ -351,7 +350,7 @@
     </factor>
     <factor id="completionUsage">
       <dailyData date="13-05-2019">
-        <observation name="count" value="3560.0" />
+        <observation name="count" value="3561.0" />
       </dailyData>
     </factor>
     <factor id="doubleFeature:explicitProximity">
@@ -740,12 +739,12 @@
       <option name="presentableId" value="Default" />
       <updated>1557686816918</updated>
       <workItem from="1557686818066" duration="4746000" />
-      <workItem from="1557749793237" duration="9006000" />
+      <workItem from="1557749793237" duration="9123000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13752000" />
+    <option name="totallyTimeSpent" value="13869000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -1145,7 +1144,7 @@
     <entry file="file://$PROJECT_DIR$/Procfile">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="23">
-          <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
+          <caret line="1" column="24" lean-forward="true" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
         </state>
       </provider>
     </entry>
