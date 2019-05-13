@@ -1,27 +1,13 @@
 <div class="mt-4 mb-4 d-flex justify-content-center top_banner_form">
   <%= render "form", house: House.new, inline: false %>
 </div>
-<table class="table table-striped bg-light">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Members</th>
-      <th>Owner</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @houses.each do |house| %>
-      <tr>
-        <td>
-          <%= link_to house.name, house_path(house) %>
-        </td>
-        <td>
-          <%= house.house_members.size %>
-        </td>
-        <td>
-          <%= house.owner.email %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
+<ul class="list-group">
+  <% @houses.each do |house| %>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <%= link_to house.name, house_path(house) %>
+      created by: <%= house.owner.email %> |
+      <%= house.house_members.size %> Members
+    </li>
+  <% end %>
+</ul>
