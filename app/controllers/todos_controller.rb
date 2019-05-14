@@ -13,6 +13,10 @@ class TodosController < ApplicationController
     end
   end
 
+  def index
+    @tree_data = TodoTreeConverter.new(current_house&.todos).run
+  end
+
   private
 
   def sync_params

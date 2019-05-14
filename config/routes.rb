@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       get :manage
     end
   end
-  resources :todos, only: %i{} do
+  resources :todos, only: %i{index} do
     collection do
       post :sync
     end
