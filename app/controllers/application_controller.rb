@@ -6,7 +6,11 @@ class ApplicationController < ActionController::Base
   private
 
   def set_flash_and_redirect_back(exception)
-    flash[:danger] = exception.message
-    redirect_back(fallback_location: root_path)
+    if request.content_type == "application/json"
+      render json: {}, status: :unprocessable_entity
+    else
+      flash[:danger] = exception.message
+      redirect_back(fallback_location: root_path)
+    end
   end
 end

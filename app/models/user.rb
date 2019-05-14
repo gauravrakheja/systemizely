@@ -10,6 +10,7 @@ class User < ApplicationRecord
            inverse_of: :member,
            foreign_key: :member_id
   has_many :houses, through: :house_members
+  has_many :todos, inverse_of: :owner
 
   def house_member_for(house)
     house_members.detect do |house_member|

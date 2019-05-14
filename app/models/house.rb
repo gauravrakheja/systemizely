@@ -8,6 +8,7 @@ class House < ApplicationRecord
   has_many :members, through: :house_members
   validates :name, uniqueness: true, presence: true
   after_create :add_owner_as_member
+  has_many :todos, inverse_of: :house
 
   def house_member_for(user)
     house_members.detect do |house_member|

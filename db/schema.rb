@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_13_124359) do
+ActiveRecord::Schema.define(version: 2019_05_14_163229) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,28 @@ ActiveRecord::Schema.define(version: 2019_05_13_124359) do
     t.index ["owner_id"], name: "index_houses_on_owner_id"
   end
 
+  create_table "todo_hierarchies", id: false, force: :cascade do |t|
+    t.integer "ancestor_id", null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations", null: false
+    t.index ["ancestor_id", "descendant_id", "generations"], name: "todo_anc_desc_idx", unique: true
+    t.index ["descendant_id"], name: "todo_desc_idx"
+  end
+
+  create_table "todos", force: :cascade do |t|
+    t.string "title"
+    t.boolean "completed", default: false
+    t.bigint "house_id"
+    t.bigint "creator_id"
+    t.bigint "parent_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "expanded", default: false
+    t.index ["creator_id"], name: "index_todos_on_creator_id"
+    t.index ["house_id"], name: "index_todos_on_house_id"
+    t.index ["parent_id"], name: "index_todos_on_parent_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -56,4 +78,6 @@ ActiveRecord::Schema.define(version: 2019_05_13_124359) do
   add_foreign_key "house_members", "houses"
   add_foreign_key "house_members", "users", column: "member_id"
   add_foreign_key "houses", "users", column: "owner_id"
+  add_foreign_key "todos", "todos", column: "parent_id"
+  add_foreign_key "todos", "users", column: "creator_id"
 end

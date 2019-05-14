@@ -6,6 +6,11 @@ Rails.application.routes.draw do
       get :manage
     end
   end
+  resources :todos, only: %i{} do
+    collection do
+      post :sync
+    end
+  end
   resources :house_members, only: %i[create destroy]
   resource :current_houses, only: [] do
     member do
