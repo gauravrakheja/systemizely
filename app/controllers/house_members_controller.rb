@@ -1,19 +1,7 @@
 class HouseMembersController < ApplicationController
   def create
-    user = User.find_by(email: house_member_params[:email])
-    if user.present?
-      @house_member = HouseMember.new(
-        member: user,
-        house_id: house_member_params[:house_id]
-      )
-      if @house_member.save
-        flash[:success] = "Member Added to the house"
-      else
-        flash[:danger] = "Member could not be Added to the house"
-      end
-    else
-      flash[:danger] = "The email is not registered on the platform"
-    end
+    response = AddMemberToHouseService.new(house_member_params[:email], house_member_params[:house_id]).run
+    flash[response.flash] = response.message
     redirect_back(fallback_location: manage_houses_path)
   end
 
