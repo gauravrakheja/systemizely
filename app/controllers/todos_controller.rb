@@ -1,7 +1,8 @@
 class TodosController < ApplicationController
   include UsersHelper
-  skip_before_action :verify_authenticity_token, only: %i[sync]
-  skip_before_action :authenticate_user!, only: %i[sync]
+  skip_before_action :verify_authenticity_token, only: %i[sync destroy]
+  skip_before_action :authenticate_user!, only: %i[sync destroy]
+  before_action :check_current_house, only: %i[index]
 
   def sync
     response = TodoSyncService.new(sync_params[:tree_data]).run
@@ -13,11 +14,23 @@ class TodosController < ApplicationController
     end
   end
 
+  def destroy
+    @todo = Todo.find(params[:id])
+    @todo.destroy
+    render json: {}, status: :ok
+  end
+
   def index
     @tree_data = TodoTreeConverter.new(current_house&.todos).run
   end
 
   private
+
+  def check_current_house
+    unless current_house.present?
+      raise ResponseError("You need to select a current house")
+    end
+  end
 
   def sync_params
     params.permit!

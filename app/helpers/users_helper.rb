@@ -7,6 +7,8 @@ module UsersHelper
     cookie_value = session[:current_house_id]
     if cookie_value.present?
       House.find(cookie_value)
+    else
+      current_user.houses.last
     end
   end
 end

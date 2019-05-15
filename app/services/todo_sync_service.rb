@@ -21,11 +21,26 @@ class TodoSyncService
 
   def parse_tree_data(nodes, grand_parent = nil)
     nodes.each do |todo_info|
-      parent = Todo.find_by(id: todo_info["id"])
+      if todo_info["id"].blank?
+        parent = Todo.create(
+          creator_id: todo_info["creator_id"],
+          house_id: todo_info["house_id"],
+          completed: todo_info["completed"],
+          expanded: todo_info["expanded"]
+        )
+      else
+        parent = Todo.find_by(id: todo_info["id"])
+      end
+
       if todo_info["name"].present?
         parent.update(title: todo_info["name"])
       end
-      parent.update(parent: grand_parent, expanded: todo_info["expanded"])
+
+      parent.update(
+        parent: grand_parent,
+        expanded: todo_info["expanded"],
+        completed: todo_info["completed"]
+      )
       next unless parent.present?
       next if todo_info["children"].empty?
 
