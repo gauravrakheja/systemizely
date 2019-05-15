@@ -110,8 +110,8 @@ export default class Todo extends Component {
 				<button
 					className="btn full-btn btn-light"
 					onClick={() =>{
-						const creator = this.state.treeData[0].creator_id;
-						const house = this.state.treeData[0].house_id;
+						const creator = this.props.creator_id;
+						const house = this.props.house_id;
 						this.setState(state => ({
 							sync: true,
 							treeData: state.treeData.concat({
