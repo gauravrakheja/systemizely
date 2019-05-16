@@ -30,9 +30,14 @@ label {
   }
 }
 
-*{
-  @media screen and (max-width: 1000px) {
+@media screen and (max-width: 1000px) {
+  *{
     font-size: 40px !important;
+  }
+  .rst__tree{
+    *{
+      font-size: 15px !important;
+    }
   }
 }
 

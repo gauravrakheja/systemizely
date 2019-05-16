@@ -113,7 +113,7 @@ class Todo extends Component {
 					/>
 				</div>
 				<button
-					className="btn full-btn btn-light"
+					className="btn full-btn btn-light mt-5"
 					onClick={() =>{
 						const creator = this.props.creator_id;
 						const house = this.props.house_id;
