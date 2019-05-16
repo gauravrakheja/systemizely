@@ -8,7 +8,8 @@ require("turbolinks").start();
 require("@rails/activestorage").start();
 require("channels");
 require("lib/currentHouse");
-require("bootstrap");
+require("popper.js");
+require("bootstrap-material-design");
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -21,3 +22,7 @@ require("bootstrap");
 var componentRequireContext = require.context("components", true);
 var ReactRailsUJS = require("react_ujs");
 ReactRailsUJS.useContext(componentRequireContext);
+
+document.addEventListener("turbolinks:load", () => {
+	$('body').bootstrapMaterialDesign();
+});

@@ -46,28 +46,30 @@ class Todo extends Component {
 						onChange={treeData => this.setState({ treeData, sync: true })}
 						generateNodeProps={({ node, path }) => ({
 							buttons: [
-									<input
-										type="checkbox"
-										name="visible"
-										value={!node.completed}
-										checked={node.completed}
-										className="todo-checkbox"
-										onChange={(event)=>{
-											const completed = event.target.value === "true";
-											console.log(completed);
-											console.log(node);
-											console.log(path);
-											this.setState({
-												sync: true,
-												treeData: changeNodeAtPath({
-													treeData: this.state.treeData,
-													path,
-													getNodeKey,
-													newNode: { ...node, completed: completed },
+									<div className="checkbox-inline">
+										<input
+											type="checkbox"
+											name="visible"
+											value={!node.completed}
+											checked={node.completed}
+											className="todo-checkbox"
+											onChange={(event)=>{
+												const completed = event.target.value === "true";
+												console.log(completed);
+												console.log(node);
+												console.log(path);
+												this.setState({
+													sync: true,
+													treeData: changeNodeAtPath({
+														treeData: this.state.treeData,
+														path,
+														getNodeKey,
+														newNode: { ...node, completed: completed },
+													})
 												})
-											})
-										}}
-									/>,
+											}}
+										/>
+									</div>,
 									<i
 										className="fa fa-trash"
 										onClick={() => {
@@ -113,7 +115,7 @@ class Todo extends Component {
 					/>
 				</div>
 				<button
-					className="btn full-btn btn-light mt-5"
+					className="btn full-btn btn-dark mt-5"
 					onClick={() =>{
 						const creator = this.props.creator_id;
 						const house = this.props.house_id;

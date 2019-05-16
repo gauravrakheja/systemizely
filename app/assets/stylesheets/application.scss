@@ -1,16 +1,7 @@
-@import "bootstrap";
 @import "font-awesome";
 @import "react-sortable-tree";
 .full-btn{
   width: 100% !important;
-}
-
-.alert-alert{
-  @extend .alert-danger;
-}
-
-label {
-  color: white;
 }
 
 #current-house-select{
@@ -29,9 +20,14 @@ label {
 
 .house-info {
   h1 {
-    color: white;
     text-align: center;
   }
+}
+
+.card-columns {
+  -webkit-column-count: 2 !important;
+  -moz-column-count: 2 !important;
+  column-count: 2 !important;
 }
 
 @media screen and (max-width: 1200px) {
@@ -49,12 +45,6 @@ label {
     -moz-column-count: 1 !important;
     column-count: 1 !important;
   }
-}
-
-.card-columns {
-  -webkit-column-count: 4;
-  -moz-column-count: 4;
-  column-count: 4;
 }
 
 .todo-checkbox{
