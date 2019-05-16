@@ -7,7 +7,6 @@ gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5'
 gem 'webpacker', '~> 4.0'
 gem 'turbolinks', '~> 5'
-gem 'bootstrap', '~> 4.3.1'
 gem 'devise'
 gem 'devise-bootstrap-views', '~> 1.0'
 gem "ransack"

@@ -10,7 +10,11 @@
 }
 
 label {
-  color: $white;
+  color: white;
+}
+
+#current-house-select{
+  color: black !important;
 }
 
 .top_banner_form {
@@ -25,12 +29,12 @@ label {
 
 .house-info {
   h1 {
-    color: $white;
+    color: white;
     text-align: center;
   }
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1200px) {
   *{
     font-size: 40px !important;
   }
@@ -41,9 +45,9 @@ label {
   }
 
   .card-columns {
-    -webkit-column-count: 1;
-    -moz-column-count: 1;
-    column-count: 1;
+    -webkit-column-count: 1 !important;
+    -moz-column-count: 1 !important;
+    column-count: 1 !important;
   }
 }
 
