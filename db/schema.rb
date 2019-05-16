@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_14_163229) do
+ActiveRecord::Schema.define(version: 2019_05_16_190440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,9 +75,32 @@ ActiveRecord::Schema.define(version: 2019_05_14_163229) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "wishlist_items", force: :cascade do |t|
+    t.bigint "wishlist_id", null: false
+    t.bigint "creator_id", null: false
+    t.string "title"
+    t.string "link"
+    t.decimal "cost"
+    t.date "buy_by"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["creator_id"], name: "index_wishlist_items_on_creator_id"
+    t.index ["wishlist_id"], name: "index_wishlist_items_on_wishlist_id"
+  end
+
+  create_table "wishlists", force: :cascade do |t|
+    t.bigint "house_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["house_id"], name: "index_wishlists_on_house_id"
+  end
+
   add_foreign_key "house_members", "houses"
   add_foreign_key "house_members", "users", column: "member_id"
   add_foreign_key "houses", "users", column: "owner_id"
   add_foreign_key "todos", "todos", column: "parent_id"
   add_foreign_key "todos", "users", column: "creator_id"
+  add_foreign_key "wishlist_items", "users", column: "creator_id"
+  add_foreign_key "wishlist_items", "wishlists"
+  add_foreign_key "wishlists", "houses"
 end

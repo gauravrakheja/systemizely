@@ -11,6 +11,12 @@ class User < ApplicationRecord
            foreign_key: :member_id
   has_many :houses, through: :house_members
   has_many :todos, inverse_of: :owner
+  has_many :created_wishlist_items,
+           class_name: "WishlistItem",
+           inverse_of: :creator,
+           foreign_key: :creator_id
+  has_many :wishlist_items,
+           through: :houses
 
   def house_member_for(house)
     house_members.detect do |house_member|

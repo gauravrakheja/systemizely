@@ -11,6 +11,8 @@ Rails.application.routes.draw do
       post :sync
     end
   end
+  resources :wishlists, only: %i{new}
+  resources :wishlist_items, only: %i{create update destroy}
   resources :house_members, only: %i[create destroy]
   resource :current_houses, only: [] do
     member do

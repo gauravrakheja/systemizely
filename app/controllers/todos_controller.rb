@@ -26,12 +26,6 @@ class TodosController < ApplicationController
 
   private
 
-  def check_current_house
-    unless current_house.present?
-      raise ResponseError("You need to select a current house")
-    end
-  end
-
   def sync_params
     params.permit!
   end

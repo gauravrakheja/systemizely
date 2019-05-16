@@ -1,0 +1,17 @@
+<h1 class="text-white" align="center">
+  WishList for <%= current_house.name %>
+</h1>
+<div class="card-columns">
+  <%= render "wishlist_items/form",
+             wishlist: @wishlist,
+             wishlist_item: @wishlist.wishlist_items.build,
+             button_text: "Add Item"
+  %>
+  <% @wishlist.reload.wishlist_items.order(:buy_by).find_each do |wishlist_item| %>
+    <%= render "wishlist_items/form",
+               wishlist: @wishlist,
+               wishlist_item: wishlist_item,
+               button_text: "Update Item"
+    %>
+  <% end %>
+</div>
