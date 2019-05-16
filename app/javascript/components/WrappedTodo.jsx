@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
-import SortableTree, { changeNodeAtPath, removeNodeAtPath } from 'react-sortable-tree';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
+import TouchBackend from 'react-dnd-touch-backend';
+import { changeNodeAtPath, removeNodeAtPath, SortableTreeWithoutDndContext as SortableTree } from 'react-sortable-tree';
 
-export default class Todo extends Component {
+const isTouchDevice = !!('ontouchstart' in window || navigator.maxTouchPoints);
+
+class Todo extends Component {
 	constructor(props) {
 		super(props);
 
@@ -129,3 +134,9 @@ export default class Todo extends Component {
 		);
 	}
 }
+
+const WrappedTodo = DragDropContext(isTouchDevice ? TouchBackend : HTML5Backend)(
+	Todo
+);
+
+export default WrappedTodo;
