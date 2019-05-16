@@ -45,6 +45,10 @@
     -moz-column-count: 1 !important;
     column-count: 1 !important;
   }
+
+  .wishlist-buttons{
+    flex-direction: column;
+  }
 }
 
 .todo-checkbox{
