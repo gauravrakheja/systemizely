@@ -18,6 +18,7 @@
       <%= form.submit button_text, class: "btn btn-dark" %>
       <% if wishlist_item.persisted? %>
         <%= link_to "Remove Item", wishlist_item_path(wishlist_item), method: :delete, class: "btn btn-danger" %>
+        <%= link_to "View Item", with_protocol(form.object.link), class: "btn btn-primary", target: "_blank" %>
       <% end %>
     </div>
     <small>Created by: <%= form.object.creator.try(:email) || current_user.email %></small>
